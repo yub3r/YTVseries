@@ -7,9 +7,12 @@ from .models import Serie
 def inicio(request):
     return HttpResponse("Hola mundo")
 
-def buscar_serie(request):
-    if request.GET.get("nombre"):
-        nombre = request.GET.get("nombre")
-        series = Serie.objects.filter(nombre__icontains=nombre)
-        return render(request, "paginas/busqueda.html", {"serie": series})
-    return render(request, "paginas/buscar.html")
+def buscar_serie(request, codserie):
+        if request.GET.get("nombre"):
+            nombre = request.GET.get("nombre")
+            series = Serie.objects.filter(nombre__icontains=nombre, codserie=codserie)
+            return render(request, "paginas/busqueda.html", {"series": series})
+     
+     
+     
+        return render(request, "paginas/buscar.html")

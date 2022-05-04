@@ -9,3 +9,4 @@ class Serie(models.Model):
     temporada = models.IntegerField()
     terminada = models.BooleanField()
     sinopsis = models.TextField()
+    codserie = models.CharField(max_length=25, default=None)
