@@ -11,5 +11,5 @@ class Critico(models.Model):
     apellido = models.CharField(max_length=255)
     email = models.EmailField()
     alias = models.CharField(max_length=25)
-    Experencia = models.TextField()
+    experiencia = models.TextField()
 
