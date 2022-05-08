@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+
+{% block contenido %}
+<ul>
+    <li>Nombre: <b>{{ critico.nombre }} {{ critico.apellido }}</b></li>
+    <li>Email:  <b>{{ critico.email }}</b></li>
+    <li>Alias:  <b>{{ critico.alias }}</b></li>
+    <li>Experiencia: {{ critico.experiencia }}</li>
+</ul>
+{% endblock contenido %} 

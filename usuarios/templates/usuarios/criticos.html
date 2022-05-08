@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block contenido %}
+    <h1>Criticos</h1>
+    <a href="{% url 'NuevoCritico' %}">Nuevo critico</a>
+    <ul style="max-width: 60vw;">
+        {% for critic in criticos %}
+            <li>
+                <a href="{% url 'VerCritico' critic.nombre %}">
+                    {{ critic }}
+                </a> 
+                <div style="float: right;">
+                    <a href="{% url 'EditarCritico' critic.id %}">
+                        Editar
+                    </a>
+                    <a href="{% url 'EliminarCritico' critic.id %}">
+                        Eliminar
+                    </a> 
+                </div> 
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock contenido %}

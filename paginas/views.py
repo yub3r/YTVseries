@@ -13,6 +13,4 @@ def buscar_serie(request, codserie):
             series = Serie.objects.filter(nombre__icontains=nombre, codserie=codserie)
             return render(request, "paginas/busqueda.html", {"series": series})
      
-     
-     
         return render(request, "paginas/buscar.html")
