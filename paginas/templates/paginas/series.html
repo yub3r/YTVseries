@@ -1,0 +1,15 @@
+{% comment %} {% extends 'layout.html' %}
+
+{% block contenido %}
+    <h1>Series</h1>
+    <a href="{% url 'NuevoCritico' %}">Nuevo critico</a>
+    <ul style="max-width: 60vw;">
+        {% for tvserie in series %}
+            <li>
+                <a href="{% url 'VerSerie' tvserie.nombre %}">
+                    {{ tvserie }}
+                </a> 
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock contenido %} {% endcomment %}

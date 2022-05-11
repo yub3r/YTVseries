@@ -12,4 +12,5 @@ class Serie(models.Model):
     codserie = models.CharField(max_length=25, default=None)
     
     def __str__(self):
-        return f"[{self.nombre}] {self.codserie}"
+        return f"{self.nombre} {self.codserie}"
+

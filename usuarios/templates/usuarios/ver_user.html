@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+
+{% block contenido %}
+<ul>
+    <li>Nombre: <b>{{ usuario.nombre }} {{ usuario.apellido }}</b></li>
+    <li>Email:  <b>{{ usuario.email }}</b></li>
+    <li>Alias:  <b>{{ usuario.alias }}</b></li>
+</ul>
+{% endblock contenido %} 
