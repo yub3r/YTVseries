@@ -9,8 +9,8 @@ class Serie(models.Model):
     temporada = models.IntegerField()
     terminada = models.BooleanField()
     sinopsis = models.TextField()
-    codserie = models.CharField(max_length=25, default=None)
-    
+    codserie = models.CharField(max_length=25, null=True, blank=True, default=None)
+ 
     def __str__(self):
         return f"{self.nombre} {self.codserie}"
 

@@ -1,4 +1,5 @@
-{% comment %} {% extends 'layout.html' %}
+{% extends 'layout.html' %}
+
 {% block contenido %}
     <center><h1>Serie</h1></center>
     <form method="POST" action=""
@@ -7,4 +8,4 @@
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Enviar">
-{% endblock contenido %} {% endcomment %}
+{% endblock contenido %}
