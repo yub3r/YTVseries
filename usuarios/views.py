@@ -38,7 +38,7 @@ def nuevo_usuario(request):
 
     mi_form = FormUsuario()
 
-    return render(request, "usuarios/formUsuarios.html", {"form": mi_form})
+    return render(request, "usuarios/formUsuarios.html", {"Userform": mi_form})
 
 
 def mod_usuario(request, id):
@@ -66,7 +66,7 @@ def mod_usuario(request, id):
         }
     )
 
-    return render(request, "usuarios/formUsuarios.html", {"form": mi_form})
+    return render(request, "usuarios/formUsuarios.html", {"Userform": mi_form})
 
 
 def del_usuario(request, id):
@@ -74,6 +74,20 @@ def del_usuario(request, id):
 
     user.delete()
     return redirect("ListaUsuarios")
+
+
+
+def buscarUsuario(request):
+    return render(request, "usuarios/buscarUsuario.html")
+    #return redirect("BuscarUsuario")
+
+def buscarU(request):
+    if request.GET.get("nombre"):                                           
+        nombre = request.GET.get("nombre")                                 
+        user = Usuario.objects.filter(nombre__icontains=nombre)                            
+        return render(request, "usuarios/busquedaU.html", {"user": user}) 
+
+    return render(request, "usuarios/buscarUsuario.html")
 
 
 def criticos(request):
@@ -114,7 +128,7 @@ def mod_critico(request, id):
         }
     )
 
-    return render(request, "usuarios/formCriticos.html", {"form": mi_form})
+    return render(request, "usuarios/formCriticos.html", {"Criticform": mi_form})
 
 
 def nuevo_critico(request):
@@ -134,7 +148,7 @@ def nuevo_critico(request):
 
     mi_form = FormCritico()
 
-    return render(request, "usuarios/formCriticos.html", {"form": mi_form})
+    return render(request, "usuarios/formCriticos.html", {"Criticform": mi_form})
 
 
 def del_critico(request, id):

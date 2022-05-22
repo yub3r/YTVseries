@@ -7,13 +7,24 @@ from .forms import FormSerie
 
 
 
-def buscar_serie(request, codserie):
-        if request.GET.get("nombre"):
-            nombre = request.GET.get("nombre")
-            series = Serie.objects.filter(nombre__icontains=nombre, codserie=codserie)
-            return render(request, "paginas/busqueda.html", {"serie": series})
-     
-        return render(request, "paginas/buscar.html")
+def buscarSerie(request):
+    return render(request, "paginas/buscarSerie.html")
+
+
+
+def buscarS(request):
+    #respuesta = f"Estoy buscando la serie {request.GET['nombre']}"
+    if request.GET.get("nombre"):                                           #Si el nombre existe entonces
+        nombre = request.GET.get("nombre")                                  #almaceno ese nombre
+        #series = Serie.objects.filter(nombre__icontains=nombre)            #filtro o busco por las letras que contiene el nombre en la DB
+        series = Serie.objects.filter(nombre__iexact=nombre)                #filtro o busco por el nombre exacto en la DB
+        return render(request, "paginas/busquedaS.html", {"serie": series}) 
+
+    return render(request, "paginas/buscarSerie.html")
+    # else:
+    #     respuesta = "No enviaste datos"
+    
+    # return HttpResponse(respuesta)
 
 
 

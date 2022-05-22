@@ -11,7 +11,7 @@
 <body style="margin: 0;">
     <div style="display: flex; flex-direction: column; min-height: 100vh;">
         <div style="flex-grow: 1; padding-inline: 1rem;">
-            <nav style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+            <nav style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; background: #7c5bff; ">
                 <div style="display: flex; flex-direction: row; align-items: center;">
                     <h2 style="margin-right: 1rem;">
                         <a href="{% url 'Inicio' %} "> YTVseries</a>
@@ -22,13 +22,15 @@
                     <a href="#" style="text-decoration: none; margin-inline: 5px;">Link4</a>
                 </div>
                 <div>
-                    <a href="#" style="text-decoration: none; margin-inline: 5px;">Link5</a>
-                    <a href="#" style="text-decoration: none; margin-inline: 5px;">Link6</a>
+                    <a href=" {% url 'BuscarUsuario' %} " style="text-decoration: none; margin-inline: 5px;">Buscar Usuario</a>
+                    <a href=" {% url 'BuscarSerie' %} " style="text-decoration: none; margin-inline: 5px;">Buscar Serie</a>
                 </div>
             </nav>
 
             <div>
-                {% block contenido %}{% endblock contenido %}
+                {% block contenido %}
+                
+                {% endblock contenido %}
             </div>
 
         </div>

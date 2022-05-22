@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block contenido %}
+    <p>Datos de la serie {{nombre}} :</p>
+
+    {% if serie %}
+
+    <ul>
+    {% for serie in serie %}
+
+        <li>Nombre: <b>{{ serie.nombre }}</b></li>
+        <li>Tipo:  <b>{{ serie.tipo }}</b></li>
+        <li>Plataforma:  <b>{{ serie.plataforma }}</b></li>
+   
+    {% endfor %}
+    </ul>
+
+    {% endif %}
+    
+{% endblock contenido %}

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block contenido %}
+    <p>Datos de la serie {{nombre}} :</p>
+
+    {% if user %}
+
+    <ul>
+    {% for usuario in user %}
+        <li>Nombre: <b>{{ usuario.nombre }} {{ usuario.apellido }}</b></li>
+        <li>Email:  <b>{{ usuario.email }}</b></li>
+        <li>Alias:  <b>{{ usuario.alias }}</b></li>
+    {% endfor %}
+    </ul>
+
+    {% endif %}
+    
+{% endblock contenido %}
