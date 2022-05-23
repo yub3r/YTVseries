@@ -33,8 +33,8 @@ def serie(request):
     return render(request, "paginas/series.html", {"serie": tvserie})
 
 
-def ver_serie(request, nombre):
-    tvserie  = Serie.objects.get(nombre=nombre)
+def ver_serie(request, codserie, ):
+    tvserie  = Serie.objects.get(codserie=codserie)
     return render(request, "paginas/ver_serie.html", {"serie": tvserie})
 
 
@@ -44,6 +44,7 @@ def nueva_serie(request):
         if mi_form.is_valid():
             info = mi_form.cleaned_data
             tvserie = Serie(
+                codserie=info["codserie"],
                 nombre=info["nombre"],
                 tipo=info["tipo"],
                 plataforma=info["plataforma"],
@@ -51,8 +52,7 @@ def nueva_serie(request):
                 episodio=info["episodio"],
                 temporada=info["temporada"],
                 terminada=info["terminada"],
-                sinopsis=info["sinopsis"],
-                codserie=info["codserie"],
+                sinopsis=info["sinopsis"],    
             )
             tvserie.save()
             return redirect("ListaSeries")

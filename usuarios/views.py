@@ -17,8 +17,8 @@ def usuarios(request):
     return render(request, "usuarios/users.html", {"usuarios": user})
 
 
-def ver_usuarios(request, nombre):
-    user = Usuario.objects.get(nombre=nombre)
+def ver_usuarios(request, id):
+    user = Usuario.objects.get(id=id)
     return render(request, "usuarios/ver_user.html", {"usuario": user})
 
 
@@ -96,8 +96,8 @@ def criticos(request):
     return render(request, "usuarios/criticos.html", {"criticos": critico})
 
 
-def ver_critico(request, nombre):
-    critic = Critico.objects.get(nombre=nombre)
+def ver_critico(request, id):
+    critic = Critico.objects.get(id=id)
     return render(request, "usuarios/ver_critico.html", {"critico": critic})
 
 

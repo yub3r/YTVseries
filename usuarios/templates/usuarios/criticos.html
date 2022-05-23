@@ -3,10 +3,10 @@
 {% block contenido %}
     <h1>Criticos</h1>
     <a href="{% url 'NuevoCritico' %}">Nuevo critico</a>
-    <ul style="max-width: 60vw;">
+    <ul style="max-width: 50vw;">
         {% for critic in criticos %}
             <li>
-                <a href="{% url 'VerCritico' critic.nombre %}">
+                <a href="{% url 'VerCritico' critic.id %}">
                     {{ critic }}
                 </a> 
                 <div style="float: right;">

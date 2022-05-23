@@ -6,7 +6,7 @@
     <ul style="max-width: 60vw;">
         {% for tvserie in serie %}
             <li>
-                <a href="{% url 'VerSerie' tvserie.nombre %}">
+                <a href="{% url 'VerSerie' tvserie.codserie %}">
                     {{ tvserie }}
                 </a> 
             </li>

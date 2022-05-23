@@ -3,21 +3,18 @@
 {% block contenido %}
     <h1>Usuarios</h1>
     <a href="{% url 'NuevoUsuario' %}">Nuevo Usuario</a>
-    <ul style="max-width: 60vw;">
+    <ul style="max-width: 50vw;">
         {% for user in usuarios %}
             <li>
-                <a href="{% url 'VerUsuario' user.nombre %}">
-                    {{ user }}
-                </a> 
+            <a href="{% url 'VerUsuario' user.id %}">{{ user }}</a> 
                 <div style="float: right;">
-                    <a href="{% url 'EditarUsuario' user.id %}">
-                        Editar
-                    </a>
-                    
-                    <a href="{% url 'EliminarUsuario' user.id %}">
-                        Eliminar
-                    </a> 
-                </div>  
+                    <button>
+                        <a href="{% url 'EditarUsuario' user.id %}">Editar</a>
+                    </button>
+                    <button> 
+                        <a href="{% url 'EliminarUsuario' user.id %}">Eliminar</a> 
+                    </button>
+                </div>
             </li>
         {% endfor %}
     </ul>
