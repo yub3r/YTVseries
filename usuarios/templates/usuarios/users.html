@@ -2,7 +2,7 @@
 
 {% block contenido %}
     <h1>Usuarios</h1>
-    <div class="py-4" style="float: right; margin-right: 10px;"><a class="btn btn-outline-secondary" href="{% url 'NuevoUsuario' %}"><i class="bi bi-person-plus-fill"></i> Nuevo Usuario</a></div>
+    <div class="py-4" style="float: right; margin-right: 8px;"><a class="btn btn-outline-secondary" href="{% url 'NuevoUsuario' %}"><i class="bi bi-person-plus-fill"></i> Nuevo Usuario</a></div>
     {% comment %} <ul style="max-width: 50vw;"> {% endcomment %}
     <table class="table">
         {% for user in usuarios %}

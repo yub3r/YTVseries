@@ -38,10 +38,11 @@
                 <a class="nav-link" href=" {% url 'ListaSeries' %} ">Series</a>
               </li>
             </ul>
-            <form class="d-flex" role="search" action="/paginas/buscar/" method="GET">
+            <form class="d-flex mx-5" role="search" action="/paginas/buscar/" method="GET">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nombre" id="nombre">
-              <button class="btn btn-outline-danger" type="submit">Buscar</button>
+              <button class="btn btn-danger" type="submit"><i class="bi bi-search"></i></button>
             </form>
+            <a style="font-weight:bold; color:white;" class="btn btn-outline-secondary" href=" {% url 'Login' %} "><i class="bi bi-person-circle"></i> | Login</a>    
           </div>
         </div>
       </nav>

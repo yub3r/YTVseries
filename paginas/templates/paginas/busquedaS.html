@@ -1,23 +1,23 @@
 {% extends 'layout.html' %}
-
 {% block contenido %}
-    <p>Datos de la serie {{nombre}} :</p>
-
+    <p>
+        Datos de la serie {{ nombre }} :
+    </p>
     {% if serie %}
-
-    <ul>
-    {% for serie in serie %}
-    
-        <li>Codigo: <b>{{ serie.codserie }} || {{ serie.nombre }}</b></li>
-        <li>Temporada:  <b>{{ serie.temporada }}</b>
-            Terminada: <b>{{ serie.terminada }}</b>
-        <p>************************************</p>
-        {% comment %} <li>Tipo:  <b>{{ serie.tipo }}</b></li>
-        <li>Plataforma:  <b>{{ serie.plataforma }}</b></li> {% endcomment %}
-   
-    {% endfor %}
-    </ul>
-
-    {% endif %}
-    
-{% endblock contenido %}
+        <ul>
+            {% for serie in serie %}
+                <li>
+                    Codigo: <b>{{ serie.codserie }} || {{ serie.nombre }}</b>
+                </li>
+                <li>
+                    Temporada:  <b>{{ serie.temporada }}</b>
+                    Terminada: <b>{{ serie.terminada }}</b>
+                    <p>
+                        ************************************
+                    </p>
+                    {% comment %} <li>Tipo:  <b>{{ serie.tipo }}</b></li>
+                    <li>Plataforma:  <b>{{ serie.plataforma }}</b></li> {% endcomment %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endblock contenido %}
