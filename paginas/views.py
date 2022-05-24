@@ -32,6 +32,11 @@ def serie(request):
     tvserie = Serie.objects.all()
     return render(request, "paginas/series.html", {"serie": tvserie})
 
+def login(request):
+    tvserie = Serie.objects.all()
+    return render(request, "paginas/login.html", {"serie": tvserie})
+
+
 
 def ver_serie(request, codserie, ):
     tvserie  = Serie.objects.get(codserie=codserie)
@@ -61,3 +66,4 @@ def nueva_serie(request):
 
     return render(request, "paginas/formSerie.html", {"form": mi_form})
 
+    

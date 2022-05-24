@@ -8,7 +8,7 @@ class Serie(models.Model):
     fecha = models.DateField(default=2000)
     episodio = models.IntegerField()
     temporada = models.IntegerField()
-    terminada = models.BooleanField(null=True, blank=True, default=None)
+    terminada = models.BooleanField(null=True, blank=True, default=False)
     sinopsis = models.TextField()
     
  

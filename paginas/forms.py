@@ -10,7 +10,7 @@ class FormSerie(forms.Form):
     fecha = forms.DateField()
     episodio = forms.IntegerField()
     temporada = forms.IntegerField()
-    terminada = forms.BooleanField()
+    terminada = forms.BooleanField(required=False)
     sinopsis = forms.CharField(widget=forms.Textarea)
     
 

@@ -7,4 +7,6 @@ urlpatterns = [
     path("series", views.serie, name="ListaSeries"),
     path("serie/<codserie>", views.ver_serie, name="VerSerie"),
     path("nueva_serie", views.nueva_serie, name="NuevaSerie"),
+    path("login", views.login, name="Login"),
+    
 ]

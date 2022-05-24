@@ -87,7 +87,7 @@ def buscarU(request):
         user = Usuario.objects.filter(nombre__icontains=nombre)                            
         return render(request, "usuarios/busquedaU.html", {"user": user}) 
 
-    return render(request, "usuarios/buscarUsuario.html")
+    #return render(request, "usuarios/buscarUsuario.html")
 
 
 def criticos(request):
