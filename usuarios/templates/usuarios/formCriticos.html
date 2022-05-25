@@ -2,8 +2,7 @@
 {% block contenido %}
     <center><h1>Criticos</h1></center>
     <form method="POST" action=""
-        style="display: flex; flex-direction: column; max-width: 40vw; margin-inline: auto"    
-    >
+        style="display: flex; flex-direction: column; max-width: 40vw; margin-inline: auto">
         {% csrf_token %}
         {{ Criticform }}
         <br>

@@ -3,13 +3,15 @@ import django
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from platformdirs import user_cache_dir
+from django.contrib.auth.decorators import login_required
+
+
 
 from usuarios.models import Critico, Usuario
 from .forms import FormCritico, FormUsuario
 
 
-def inicio(request):
-    return render(request, "usuarios/inicio.html")
+
 
 
 def usuarios(request):
@@ -21,7 +23,7 @@ def ver_usuarios(request, id):
     user = Usuario.objects.get(id=id)
     return render(request, "usuarios/ver_user.html", {"usuario": user})
 
-
+@login_required
 def nuevo_usuario(request):
     if request.method == "POST":
         mi_form = FormUsuario(request.POST)

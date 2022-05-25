@@ -90,13 +90,16 @@
 {% block contenido %}
 <div class="text-center">
     <main class="form-signin w-100 m-auto">
-        <form>
+        <form action="" method="POST" style="display: flex; flex-direction: column; max-width: 20vw; margin-inline: auto">
+          {% csrf_token %}
+          {{ form }}
             {% comment %} <img class="mb-4"
                  src="/docs/5.2/assets/brand/bootstrap-logo.svg"
                  alt=""
                  width="72"
                  height="57"> {% endcomment %}
-            <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+            {% comment %} <h1 class="h3 mb-3 fw-normal">Login</h1>
             <div class="form-floating">
                 <input type="email"
                        class="form-control"
@@ -110,7 +113,8 @@
                        id="floatingPassword"
                        placeholder="Password">
                 <label for="floatingPassword">Contraseña</label>
-            </div>
+            </div> {% endcomment %}
+
             {% comment %} <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me">
