@@ -1,10 +1,12 @@
+from sre_constants import SUCCESS
 from urllib import request
 import django
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Serie
 from .forms import FormSerie
-
+from django.views.generic import ListView
+from django.views.generic.edit import DeleteView, UpdateView
 
 
 def buscarSerie(request):
@@ -21,11 +23,6 @@ def buscarS(request):
         return render(request, "paginas/busquedaS.html", {"serie": series}) 
 
     return render(request, "paginas/buscarSerie.html")
-    # else:
-    #     respuesta = "No enviaste datos"
-    
-    # return HttpResponse(respuesta)
-
 
 
 def serie(request):
@@ -60,10 +57,24 @@ def nueva_serie(request):
                 sinopsis=info["sinopsis"],    
             )
             tvserie.save()
-            return redirect("ListaSeries")
+            return redirect("SerieList")
 
     mi_form = FormSerie()
 
-    return render(request, "paginas/formSerie.html", {"form": mi_form})
+    return render(request, "paginas/serie_form.html", {"form": mi_form})
 
-    
+
+#Se agregan Vistas basadas en clases
+
+class SerieList(ListView):
+    model = Serie
+    template_name = "/paginas/series.html"
+
+class SerieDelete(DeleteView):
+    model = Serie
+    success_url = "/paginas/series"
+
+class SerieUpdate(UpdateView):
+    model = Serie
+    success_url = "/paginas/series"
+    fields = ['codserie','nombre','tipo','plataforma','fecha','episodio','temporada','terminada','sinopsis']

@@ -35,7 +35,7 @@
                 <a class="nav-link" href=" {% url 'ListaUsuarios' %} ">Usuarios</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href=" {% url 'ListaSeries' %} ">Series</a>
+                <a class="nav-link" href=" {% url 'SerieList' %} ">Series</a>
               </li>
             </ul>
             <form class="d-flex mx-5" role="search" action="/paginas/buscar/" method="GET">
@@ -50,22 +50,6 @@
 
     <div style="display: flex; flex-direction: column; min-height: 100vh;">
         <div style="flex-grow: 1; padding-inline: 1rem;">
-            {% comment %} <nav class="header" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;  ">
-                <div style="display: flex; flex-direction: row; align-items: center;">
-                    <h2 style="margin-right: 1rem;">
-                        <a href="{% url 'Inicio' %} "> YTVseries</a>
-                    </h2>
-                    <a href=" {% url 'ListaCriticos' %} " style="text-decoration: none; margin-inline: 5px;">Criticos</a>
-                    <a href=" {% url 'ListaUsuarios' %} " style="text-decoration: none; margin-inline: 5px;">Usuarios</a>
-                    <a href=" {% url 'ListaSeries' %} " style="text-decoration: none; margin-inline: 5px;">Series</a>
-                    <a href="#" style="text-decoration: none; margin-inline: 5px;">Link4</a>
-                </div>
-                <div>
-                    <a href=" {% url 'BuscarUsuario' %} " style="text-decoration: none; margin-inline: 5px;">Buscar Usuario</a>
-                    <a href=" {% url 'BuscarSerie' %} " style="text-decoration: none; margin-inline: 5px;">Buscar Serie</a>
-                </div>
-            </nav> {% endcomment %}
-
         <div class="container mt-4 pt-5">
             {% block contenido %}
             
