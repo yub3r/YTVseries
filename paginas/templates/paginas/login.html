@@ -1,3 +1,4 @@
+
 {% extends 'layout.html' %}
 {% block head %}
     <style>
@@ -88,16 +89,19 @@
     </style>
 {% endblock head %}
 {% block contenido %}
-<div class="text-center">
+
+<div class="text-center m-auto">
     <main class="form-signin w-100 m-auto">
         <form action="" method="POST" style="display: flex; flex-direction: column; max-width: 20vw; margin-inline: auto">
+          <div class="text-center">
+            <img class="mb-4"
+            src="/media/YTVSerie-small.png"
+            alt="ytvserie-logo"
+            width="149"
+            height="80">
+          </div>
           {% csrf_token %}
           {{ form }}
-            {% comment %} <img class="mb-4"
-                 src="/docs/5.2/assets/brand/bootstrap-logo.svg"
-                 alt=""
-                 width="72"
-                 height="57"> {% endcomment %}
 
             {% comment %} <h1 class="h3 mb-3 fw-normal">Login</h1>
             <div class="form-floating">

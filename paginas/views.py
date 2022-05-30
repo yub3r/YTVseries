@@ -5,11 +5,12 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Serie
 from .forms import FormSerie
+from usuarios.views import es_admin
+from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic import ListView 
 from django.views.generic.edit import DeleteView, UpdateView
-from django.contrib.auth.decorators import login_required 
-from django.contrib.auth.mixins import LoginRequiredMixin #Necesario si es usa vistas basadas en clases
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin #Necesario si es usa vistas basadas en clases
 from django.contrib.auth import authenticate, login
 
 
@@ -38,8 +39,13 @@ def login_request(request):
 
 
 
+
+
 def inicio(request):
     return render(request, "paginas/inicio.html")
+
+def sobremi(request):
+    return render(request, "paginas/about.html")
 
 def buscarSerie(request):
     return render(request, "paginas/buscarSerie.html")
@@ -50,23 +56,23 @@ def buscarS(request):
         nombre = request.GET.get("nombre")                                  #almaceno ese nombre
         #series = Serie.objects.filter(nombre__icontains=nombre)            #filtro o busco por las letras que contiene el nombre en la DB
         series = Serie.objects.filter(nombre__iexact=nombre)                #filtro o busco por el nombre exacto en la DB
-        return render(request, "paginas/busquedaS.html", {"serie": series}) 
+        if series:
+            return render(request, "paginas/busquedaS.html", {"serie": series}) 
 
-    return render(request, "paginas/buscarSerie.html")
+        else:   
+            return render(request, "paginas/inicio.html", {'mensaje':"Serie no encontrada"})
+
 
 
 def serie(request):
     tvserie = Serie.objects.all()
     return render(request, "paginas/series.html", {"serie": tvserie})
 
-# def login(request):
-#     tvserie = Serie.objects.all()
-#     return render(request, "paginas/login.html", {"serie": tvserie})
-
 def ver_serie(request, codserie, ):
     tvserie  = Serie.objects.get(codserie=codserie)
     return render(request, "paginas/ver_serie.html", {"serie": tvserie})
 
+@user_passes_test(es_admin)
 def nueva_serie(request):
     if request.method == "POST":
         mi_form = FormSerie(request.POST)
@@ -81,7 +87,8 @@ def nueva_serie(request):
                 episodio=info["episodio"],
                 temporada=info["temporada"],
                 terminada=info["terminada"],
-                sinopsis=info["sinopsis"],    
+                sinopsis=info["sinopsis"], 
+                imagen=info["imagen"],   
             )
             tvserie.save()
             return redirect("SerieList")
@@ -97,11 +104,19 @@ class SerieList(ListView):
     model = Serie
     template_name = "/paginas/series.html"
 
-class SerieDelete(DeleteView):
-    model = Serie
-    success_url = "/paginas/series"
 
-class SerieUpdate(UpdateView):
+class SerieDelete(UserPassesTestMixin, DeleteView):
     model = Serie
     success_url = "/paginas/series"
-    fields = ['codserie','nombre','tipo','plataforma','fecha','episodio','temporada','terminada','sinopsis']
+    
+    def test_func(self):
+        return self.request.user.is_authenticated and (self.request.user.is_staff)
+
+class SerieUpdate(UserPassesTestMixin, UpdateView):
+    model = Serie
+    success_url = "/paginas/series"
+    fields = ['codserie','nombre','tipo','plataforma','fecha','episodio','temporada','terminada','sinopsis','imagen']
+
+    def test_func(self):
+        return self.request.user.is_authenticated and (self.request.user.is_staff)
+        

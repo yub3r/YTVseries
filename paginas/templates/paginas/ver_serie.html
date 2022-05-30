@@ -8,6 +8,10 @@
     <li>Tipo:  <b>{{ serie.tipo }}</b></li>
     <li>Plataforma:  <b>{{ serie.plataforma }}</b></li>
     <li>Temporada:  <b>{{ serie.temporada }}</b></li>
+    {% if serie.imagen %} 
+    <img src="{{serie.imagen.url}}" alt="{{ serie.nombre }}">
+    {% endif %}
+ 
     
     <div class="py-4" style="float: right; margin-right: 8px;">
         <a class="btn btn-outline-secondary" href="{% url 'SerieList' %}"><i class="bi bi-box-arrow-left"></i> Regresar</a>
