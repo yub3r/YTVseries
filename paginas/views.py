@@ -54,11 +54,10 @@ def buscarS(request):
     #respuesta = f"Estoy buscando la serie {request.GET['nombre']}"
     if request.GET.get("nombre"):                                           #Si el nombre existe entonces
         nombre = request.GET.get("nombre")                                  #almaceno ese nombre
-        #series = Serie.objects.filter(nombre__icontains=nombre)            #filtro o busco por las letras que contiene el nombre en la DB
-        series = Serie.objects.filter(nombre__iexact=nombre)                #filtro o busco por el nombre exacto en la DB
+        series = Serie.objects.filter(nombre__icontains=nombre)            #filtro o busco por las letras que contiene el nombre en la DB
+        #series = Serie.objects.filter(nombre__iexact=nombre)                #filtro o busco por el nombre exacto en la DB
         if series:
             return render(request, "paginas/busquedaS.html", {"serie": series}) 
-
         else:   
             return render(request, "paginas/inicio.html", {'mensaje':"Serie no encontrada"})
 

@@ -1,38 +1,53 @@
-# YTVseries
+\## YTVSerie
 
-Inicios de construcción de sitio web dedicado a Series de TV, donde críticos podran postear articulos sobre una serie y usarios podran hacer votaciones.
+Este sitio se trata de una web tipo catalogo sobre Series de TV en esencia, va a contener lista de [Bingers](https://www.chilango.com/cine/como-saber-si-eres-un-binger/#:~:text=B%C3%A1sicamente%20se%20aplica%20a%20aquellas,los%2012%20pasos%20de%20recuperaci%C3%B3n.)  afiliados, así como también Críticos especializados.
 
-Incialmente se crean tres models o tablas:
+Para el acceso va a tener dos tipos de usuarios, el admin con permisos de Lectura, Escritura y Actualización en el sitio web. El otro es un usuario con solo permiso de lectura.
+
+La Base de datos está conformada por:
+
+# Tabla de **Serie**
+
+|     |     |
+| --- | --- |
+| codserie | codigo o alias referente a la serie |
+| nombre | nombre publicado |
+| tipo | podría considerarse tambien como el genero |
+| plataforma | Servicio de Streaming donde se encuentra la serie |
+| fecha | fecha de emision de la temporada |
+| episodios | cantidad de episodios de la temporada |
+| temporada | numero de temporada |
+| terminada | Si está o no terminada. |
+| sinopsis | Esto es un pequeño resumen de la serie o temporada |
+| imagen | Campo para agregar una imagen referencial |
+
+# Tabla de **Critico**
+
+|     |     |
+| --- | --- |
+| nombre | nombre del critico |
+| apellido | apellido |
+| email | email |
+| alias | alias o seudónimo |
+| experiencia | experiencia o estudios |
+
+# Tabla de **Bringer**
+
+|     |     |
+| --- | --- |
+| nombre | nombre |
+| apellido | apellido |
+| email | email |
+| alias | alias o seudónimo |
 
 
-# Usuario
-nombre = models.CharField(max_length=255)
-apellido = models.CharField(max_length=255)
-email = models.EmailField()
-alias = models.CharField(max_length=25)
+Para los accesos está registrado únicamente un admin y puede registrar tantos usuarios (solo lectura) que desee.
 
-# Critico
-nombre = models.CharField(max_length=255)
-apellido = models.CharField(max_length=255)
-email = models.EmailField()
-alias = models.CharField(max_length=25)
-experiencia = models.TextField()
-
-# Series 
-nombre = models.CharField(max_length=255)
-tipo = models.CharField(max_length=255)
-plataforma = models.CharField(max_length=255)
-fecha = models.DateField(default=2000)
-episodio = models.IntegerField()
-temporada = models.IntegerField()
-terminada = models.BooleanField()
-sinopsis = models.TextField()
-codserie = models.CharField(max_length=25, default=None)
-
+|     |     |
+| --- | --- |
+| **admin** | YTVS.123 |
+| **usuario1** | YTVS.user1 |
+| **usuario2** | YTVS.user2 |
 
 # Para la administracion:
 http://127.0.0.1:8000/admin/
-
-user: admin
-pass: YTVS.123
-
