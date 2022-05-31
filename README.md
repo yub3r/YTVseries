@@ -1,4 +1,4 @@
-\## YTVSerie
+## YTVSerie
 
 Este sitio se trata de una web tipo catalogo sobre Series de TV en esencia, va a contener lista de [Bingers](https://www.chilango.com/cine/como-saber-si-eres-un-binger/#:~:text=B%C3%A1sicamente%20se%20aplica%20a%20aquellas,los%2012%20pasos%20de%20recuperaci%C3%B3n.)  afiliados, así como también Críticos especializados.
 
